@@ -3,7 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.achome</groupId>
   <artifactId>SnipeShark</artifactId>
-  <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>SnipeShark Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -34,4 +33,8 @@
   <build>
     <finalName>SnipeShark</finalName>
   </build>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>Datasource</module>
+  </modules>
 </project>
