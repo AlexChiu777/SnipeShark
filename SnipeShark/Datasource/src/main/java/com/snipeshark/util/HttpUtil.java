@@ -1,6 +1,7 @@
 package com.snipeshark.util;
 
 import com.snipeshark.provider.thetvdb.model.Mirrors;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -382,6 +383,59 @@ public class HttpUtil {
 		// get response in default encoding
 		rst = output.toString(DEFAULT_URL_CHARSET);
 		return rst;
+	}
+
+	public byte[] getTwoWayToByteArray (String _url) {
+		if (_url == null) {
+			return null;
+		}
+
+		HttpURLConnection connection = null;
+		byte[] bytes = null;
+
+
+		try {
+			String url = _url;
+
+			System.out.println("HTTP GET:Open URL - " + url);
+
+			// create a connection
+			connection = (HttpURLConnection) (new URL(url)).openConnection();
+
+			// set connection properties
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.setUseCaches(false);
+			connection.setAllowUserInteraction(false);
+			connection.setRequestMethod("GET");
+
+			System.out.println("HTTP GET:Connect");
+
+			// open the connection
+			connection.connect();
+
+			System.out.println("HTTP GET:WaitResponse");
+			int status = connection.getResponseCode();
+			// return result only when HTTP code 200 is returned
+			if (status == HttpURLConnection.HTTP_OK) {
+				bytes = IOUtils.toByteArray(connection.getInputStream());
+			}
+
+			// close connection
+			connection.disconnect();
+			connection = null;
+
+			System.out.println("HTTP GET:DONE - " + status);
+		} catch (Exception e) {
+			System.out.println("HTTP GET: Exception - " + e);
+		} finally {
+			if (connection != null) {
+				connection.disconnect();
+				connection = null;
+			}
+		}
+
+		return bytes;
 	}
 
 	public void sendTextContentViaHttp(HttpServletResponse response, String content, String filename) throws IOException {

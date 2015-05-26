@@ -16,6 +16,9 @@ public class TVDBData {
     @XmlElement(name="series")
     private List<TVDBSeries> series;
 
+    @XmlElement(name="episode")
+    private List<TVDBEpisode> episodes;
+
     public List<TVDBSeries> getSeries() {
         return series;
     }
@@ -24,10 +27,19 @@ public class TVDBData {
         this.series = series;
     }
 
+    public List<TVDBEpisode> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(List<TVDBEpisode> episodes) {
+        this.episodes = episodes;
+    }
+
     @Override
     public String toString() {
         return "TVDBData{" +
                 "series=" + series +
+                ", episodes=" + episodes +
                 '}';
     }
 }

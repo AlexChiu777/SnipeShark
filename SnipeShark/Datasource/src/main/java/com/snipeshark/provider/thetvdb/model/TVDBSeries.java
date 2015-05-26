@@ -1,11 +1,17 @@
 package com.snipeshark.provider.thetvdb.model;
 
 import com.snipeshark.entity.Actor;
+import com.snipeshark.provider.thetvdb.model.adapter.AddedTimestampAdapter;
+import com.snipeshark.provider.thetvdb.model.adapter.AirTimeAdapter;
+import com.snipeshark.provider.thetvdb.model.adapter.FirstAiredAdapter;
+import com.snipeshark.provider.thetvdb.model.adapter.StringListAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,22 +24,26 @@ public class TVDBSeries {
     public long id;
 
     @XmlElement(name="actors")
-    public String actors;
+    @XmlJavaTypeAdapter(StringListAdapter.class)
+    public List<String> actors;
 
     @XmlElement(name="airs_dayofweek")
     public String airsDayOfWeek;
 
     @XmlElement(name="airs_time")
-    public String airTime;
+    @XmlJavaTypeAdapter(AirTimeAdapter.class)
+    public Date airTime;
 
     @XmlElement(name="contentrating")
     public String contentRating;
 
     @XmlElement(name="firstaired")
-    public String firstAired;
+    @XmlJavaTypeAdapter(FirstAiredAdapter.class)
+    public Date firstAired;
 
     @XmlElement(name="genre")
-    public String genre;
+    @XmlJavaTypeAdapter(StringListAdapter.class)
+    public List<String> genre;
 
     @XmlElement(name="imdb_id")
     public String imdb_id;
@@ -69,10 +79,23 @@ public class TVDBSeries {
     public String status;
 
     @XmlElement(name="added")
-    public String added;
+    @XmlJavaTypeAdapter(AddedTimestampAdapter.class)
+    public Date added;
 
     @XmlElement(name="addedby")
     public String addedBy;
+
+    @XmlElement(name="banner")
+    private String banner;
+
+    @XmlElement(name="fanart")
+    private String fanart;
+
+    @XmlElement(name="lastupdated")
+    private long lastUpdated;
+
+    @XmlElement(name="poster")
+    private String poster;
 
     @XmlElement(name="zap2it_id")
     public String zap2itId;
@@ -85,12 +108,44 @@ public class TVDBSeries {
         this.id = id;
     }
 
-    public String getActors() {
+    public List<String> getActors() {
         return actors;
     }
 
-    public void setActors(String actors) {
+    public void setActors(List<String> actors) {
         this.actors = actors;
+    }
+
+    public Date getAirTime() {
+        return airTime;
+    }
+
+    public void setAirTime(Date airTime) {
+        this.airTime = airTime;
+    }
+
+    public Date getFirstAired() {
+        return firstAired;
+    }
+
+    public void setFirstAired(Date firstAired) {
+        this.firstAired = firstAired;
+    }
+
+    public List<String> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(List<String> genre) {
+        this.genre = genre;
+    }
+
+    public Date getAdded() {
+        return added;
+    }
+
+    public void setAdded(Date added) {
+        this.added = added;
     }
 
     public String getAirsDayOfWeek() {
@@ -101,13 +156,6 @@ public class TVDBSeries {
         this.airsDayOfWeek = airsDayOfWeek;
     }
 
-    public String getAirTime() {
-        return airTime;
-    }
-
-    public void setAirTime(String airTime) {
-        this.airTime = airTime;
-    }
 
     public String getContentRating() {
         return contentRating;
@@ -115,22 +163,6 @@ public class TVDBSeries {
 
     public void setContentRating(String contentRating) {
         this.contentRating = contentRating;
-    }
-
-    public String getFirstAired() {
-        return firstAired;
-    }
-
-    public void setFirstAired(String firstAired) {
-        this.firstAired = firstAired;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getImdb_id() {
@@ -221,13 +253,6 @@ public class TVDBSeries {
         this.status = status;
     }
 
-    public String getAdded() {
-        return added;
-    }
-
-    public void setAdded(String added) {
-        this.added = added;
-    }
 
     public String getAddedBy() {
         return addedBy;
@@ -245,16 +270,48 @@ public class TVDBSeries {
         this.zap2itId = zap2itId;
     }
 
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
+
+    public String getFanart() {
+        return fanart;
+    }
+
+    public void setFanart(String fanart) {
+        this.fanart = fanart;
+    }
+
+    public long getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(long lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     @Override
     public String toString() {
         return "TVDBSeries{" +
                 "id=" + id +
-                ", actors='" + actors + '\'' +
+                ", actors=" + actors +
                 ", airsDayOfWeek='" + airsDayOfWeek + '\'' +
-                ", airTime='" + airTime + '\'' +
+                ", airTime=" + airTime +
                 ", contentRating='" + contentRating + '\'' +
-                ", firstAired='" + firstAired + '\'' +
-                ", genre='" + genre + '\'' +
+                ", firstAired=" + firstAired +
+                ", genre=" + genre +
                 ", imdb_id='" + imdb_id + '\'' +
                 ", language='" + language + '\'' +
                 ", network='" + network + '\'' +
@@ -266,8 +323,12 @@ public class TVDBSeries {
                 ", seriesId=" + seriesId +
                 ", seriesName='" + seriesName + '\'' +
                 ", status='" + status + '\'' +
-                ", added='" + added + '\'' +
+                ", added=" + added +
                 ", addedBy='" + addedBy + '\'' +
+                ", banner='" + banner + '\'' +
+                ", fanart='" + fanart + '\'' +
+                ", lastUpdated=" + lastUpdated +
+                ", poster='" + poster + '\'' +
                 ", zap2itId='" + zap2itId + '\'' +
                 '}';
     }
