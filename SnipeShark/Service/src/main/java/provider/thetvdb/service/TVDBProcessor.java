@@ -15,11 +15,11 @@ import java.util.zip.ZipInputStream;
 /**
  * Created by Alex on 5/24/2015.
  */
-public class TVProcessor {
+public class TVDBProcessor {
     private String apiKey;
     private String language;
 
-    public TVProcessor(String apiKey) {
+    public TVDBProcessor(String apiKey) {
         this.apiKey = apiKey;
     }
 
