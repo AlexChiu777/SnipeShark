@@ -38,7 +38,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>core</module>
-        <module>Datasource</module>
-        <module>Service</module>
+        <module>datasource</module>
+        <module>service</module>
     </modules>
 </project>
