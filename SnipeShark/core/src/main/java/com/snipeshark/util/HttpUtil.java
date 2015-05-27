@@ -1,10 +1,12 @@
 package com.snipeshark.util;
 
-import com.snipeshark.provider.thetvdb.model.Mirrors;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
