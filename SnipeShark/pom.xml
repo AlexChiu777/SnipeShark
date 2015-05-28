@@ -40,5 +40,6 @@
         <module>core</module>
         <module>datasource</module>
         <module>service</module>
+        <module>web</module>
     </modules>
 </project>
