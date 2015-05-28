@@ -1,20 +1,10 @@
-package com.snipeshark.entity;
-
-import javax.persistence.*;
+package com.snipeshark.model;
 
 /**
- * Created by Alex on 5/24/2015.
+ * Created by Alex on 5/27/2015.
  */
-@Entity
-@Access(AccessType.FIELD)
-@Table(name="TV_NETWORK")
-public class TVNetwork extends BaseModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="NETWORK_ID")
+public class TVNetwork {
     private int networkId;
-
-    @Column(name="NETWORK_NAME")
     private String networkName;
 
     public int getNetworkId() {

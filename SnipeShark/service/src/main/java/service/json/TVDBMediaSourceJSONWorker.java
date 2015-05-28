@@ -1,5 +1,6 @@
 package service.json;
 
+import com.snipeshark.SSConstants;
 import org.codehaus.jackson.map.ObjectMapper;
 import provider.thetvdb.service.TVDBProcessor;
 
@@ -8,25 +9,34 @@ import provider.thetvdb.service.TVDBProcessor;
  */
 public class TVDBMediaSourceJSONWorker implements MediaSourceJSONFactory {
     private TVDBProcessor processor;
-    private static final String language = "en";
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public TVDBMediaSourceJSONWorker(String apiKey) {
-        processor = new TVDBProcessor(apiKey);
+        processor = new TVDBProcessor(apiKey, SSConstants.LANGUAGE_ENGLISH);
     }
 
     @Override
     public String getSeriesById(String seriesId) throws Exception {
-        return mapper.writeValueAsString(processor.getTVDBSeriesInfoById(seriesId, language));
+        return mapper.writeValueAsString(processor.getTVDBSeriesInfoById(seriesId));
     }
 
     @Override
-    public String getSeriesByName(String seriesName) throws  Exception{
+    public String getFullSeriesById(String seriesId) throws Exception {
+        return mapper.writeValueAsString(processor.getTVDBFullSeriesInfoById(seriesId));
+    }
+
+    @Override
+    public String getBasicSeriesByName(String seriesName) throws  Exception{
         return mapper.writeValueAsString(processor.getTVDBSeriesInfoByName(seriesName));
     }
 
     @Override
     public String getEpisodeById(String episodeId) throws Exception {
-        return mapper.writeValueAsString(processor.getTVDBEpisodeInfoById(episodeId, language));
+        return mapper.writeValueAsString(processor.getTVDBEpisodeInfoById(episodeId));
+    }
+
+    @Override
+    public String getUpdatesByTimeDiff(long timeDiff) throws Exception {
+        return mapper.writeValueAsString(processor.getTVDBUpdate(timeDiff));
     }
 }

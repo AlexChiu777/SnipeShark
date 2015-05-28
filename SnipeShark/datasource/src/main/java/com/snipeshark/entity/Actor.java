@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Access(AccessType.FIELD)
 @Table(name="ACTOR")
-public class Actor {
+public class Actor extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ACTOR_ID")

@@ -61,7 +61,7 @@ public class TVDBSeries {
     private String overview;
 
     @XmlElement(name="rating")
-    private double rating;
+    private float rating;
 
     @XmlElement(name="ratingcount")
     private int ratingCount;
@@ -69,6 +69,7 @@ public class TVDBSeries {
     @XmlElement(name="runtime")
     private int runTime;
 
+    //deprecated, don't use~~
     @XmlElement(name="seriesid")
     private long seriesId;
 
@@ -208,11 +209,11 @@ public class TVDBSeries {
         this.overview = overview;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

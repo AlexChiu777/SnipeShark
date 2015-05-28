@@ -31,4 +31,7 @@ public final class TVDBConstants {
     public static final String ZIP_EXTENSION = ".zip";
     public static final String XML_EXTENSION = ".xml";
     public static final String URL_DIVIDER = "/";
+
+    public static final String TVDB_DELIMITER = "|";
+
 }

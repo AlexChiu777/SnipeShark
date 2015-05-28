@@ -19,8 +19,9 @@ public class TVDBProcessor {
     private String apiKey;
     private String language;
 
-    public TVDBProcessor(String apiKey) {
+    public TVDBProcessor(String apiKey, String language) {
         this.apiKey = apiKey;
+        this.language = language;
     }
 
     //Gets a list of mirrors from tvdb
@@ -52,7 +53,7 @@ public class TVDBProcessor {
     }
 
     //get series content in a zip format
-    public TVDBZip getTVDBZipFileContent(String seriesId, String language) {
+    public TVDBZip getTVDBZipFileContent(String seriesId) {
         TVDBZip tvdbZip = new TVDBZip();
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey + TVDBConstants.TV_DB_SERIES_URI
                 + seriesId + TVDBConstants.TV_DB_ALL_URI + language + TVDBConstants.ZIP_EXTENSION;
@@ -85,7 +86,7 @@ public class TVDBProcessor {
     }
 
     //get series content by series id
-    public TVDBData getTVDBSeriesInfoById(String seriesId, String language) {
+    public TVDBData getTVDBSeriesInfoById(String seriesId) {
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey +
                 TVDBConstants.TV_DB_SERIES_URI + seriesId + TVDBConstants.URL_DIVIDER + language + TVDBConstants.XML_EXTENSION;
 
@@ -95,8 +96,19 @@ public class TVDBProcessor {
 
     }
 
+    //get series content and episode content
+    public TVDBData getTVDBFullSeriesInfoById(String seriesId) {
+        String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey +
+                TVDBConstants.TV_DB_SERIES_URI + seriesId + TVDBConstants.TV_DB_ALL_URI + language + TVDBConstants.XML_EXTENSION;
+
+        String xml = HttpUtil.getInstance().getTwoWayMessage(url);
+
+        return (TVDBData) new XmlUtil(TVDBData.class).getXmlObject(xml);
+
+    }
+
     //get episode content by episode id
-    public TVDBData getTVDBEpisodeInfoById(String episodeId, String language) {
+    public TVDBData getTVDBEpisodeInfoById(String episodeId) {
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey + TVDBConstants.TV_DB_EPISODES_URI
                 + episodeId + TVDBConstants.URL_DIVIDER + language + TVDBConstants.XML_EXTENSION;
 
@@ -170,20 +182,4 @@ public class TVDBProcessor {
 
     }
 
-    /*public static void main(String[] args) {
-        String seriesId = "270408";
-        String languageId = "en";
-        String apiKey = "DFCDB4071E338637";
-
-        TvdbProcessingService tvdbProcessingService = new TvdbProcessingService(apiKey);
-        //TVDBData tvdbData = tvdbProcessingService.getTVDBSeriesInfo("Chuck");
-
-        //TVDBZip zip = tvdbProcessingService.getTVDBZipFileContent(seriesId, languageId);
-
-        TVDBData data = tvdbProcessingService.getTVDBUpdate(83400);
-
-        System.out.println(data);
-
-
-    }*/
 }

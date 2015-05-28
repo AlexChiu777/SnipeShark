@@ -45,7 +45,7 @@ public class TVDBEpisode {
     @XmlElement(name="episodename")
     private String episodeName;
 
-    @XmlElement(name="episodeNumber")
+    @XmlElement(name="episodenumber")
     private int episodeNumber;
 
     @XmlElement(name="firstaired")

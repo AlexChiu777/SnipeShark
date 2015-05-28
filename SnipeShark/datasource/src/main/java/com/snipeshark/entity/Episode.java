@@ -6,8 +6,8 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.FIELD)
-@Table(name = "EPISODE")
-public class Episode {
+@Table(name = "EPISODE", uniqueConstraints = @UniqueConstraint(columnNames = {"PROVIDER_ID", "PROVIDER"}))
+public class Episode extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "EPISODE_ID")
@@ -47,14 +47,30 @@ public class Episode {
     @Column(name = "LAST_UPDATED_DATE")
     private Date lastUpdated;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "SEASON_ID")
-    private Season season;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="EPISODE_ACTOR", joinColumns = @JoinColumn(name="EPISODE_ID"),
             inverseJoinColumns = @JoinColumn(name="ACTOR_ID"))
     private List<Actor> actorList;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumns({@JoinColumn(name="SEASON_ID"), @JoinColumn(name="SERIES_ID")})
+    private Season season;
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
+    }
 
     public long getEpisodeID() {
         return episodeID;
@@ -152,11 +168,5 @@ public class Episode {
         this.lastUpdated = lastUpdated;
     }
 
-    public Season getSeason() {
-        return season;
-    }
 
-    public void setSeason(Season season) {
-        this.season = season;
-    }
 }

@@ -17,6 +17,17 @@ public class Language {
     @Column(name="ISO_CODE")
     private String isoCode;
 
+    @Column(name="DESCRIPTION")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getLanguageId() {
         return languageId;
     }

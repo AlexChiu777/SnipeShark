@@ -1,3 +1,6 @@
+import com.snipeshark.entity.Actor;
+import com.snipeshark.entity.Episode;
+import com.snipeshark.entity.Season;
 import com.snipeshark.entity.Series;
 
 import javax.persistence.EntityManager;
@@ -21,6 +24,31 @@ public class Application {
             em = emf.createEntityManager();
             tx = em.getTransaction();
             tx.begin();
+
+            Episode episode = new Episode();
+            episode.setEpisodeID(1);
+            episode.setEpisodeName("alex");
+
+            Season season = new Season();
+            season.setSeasonId(1);
+
+            Series series = new Series();
+            series.setSeriesID(1);
+
+            episode.setSeason(season);
+
+            season.setSeries(series);
+
+
+
+
+
+
+
+            em.merge(episode);
+
+
+
             tx.commit();
 
         } catch (Exception e) {

@@ -1,5 +1,9 @@
 package service.data;
 
+import com.snipeshark.model.Episode;
+import com.snipeshark.model.Series;
+import com.snipeshark.model.UpdatedContent;
+
 import java.util.List;
 
 /**
@@ -7,19 +11,18 @@ import java.util.List;
  */
 public interface MediaSourceServiceFactory {
     //void for now
-    void getSeriesByName(String seriesName);
-    void getSeriesByID(String seriesId);
-    void getDetailSeriesByID(String seriesId);
-    void getEpisodeFromSeriesByID(String seriesId, String episodeId);
+    List<Series> getBasicSeriesByName(String seriesName);
+    Series getSeriesById(String seriesId);
+    Series getFullSeriesById(String seriesId);
+    Episode getEpisodeById(String episodeId);
 
     //this is specifically for forced update (if last updated didn,t change - returns null)
-    void getSpecifcSeriesUpdate(long lastUpdated, String seriesId);
+    Series getSpecifcSeriesUpdate(long lastUpdated, String seriesId);
+
+    Episode getSpecifcEpisodeUpdate(long lastUpdated, String episodeId);
 
     //preferred to use daily or weekly - monthly and all are usually not used
     //will only return series that are in the list AND have been updated
-    void getDailyUpdatedInfoForSeries(List<String> seriesList);
-    void getWeeklyUpdatedInfoForSeries(List<String> seriesList);
-    void getMonthlyUpdatedInfoForSeries(List<String> seriesList);
-    void getAllUpdatedInfoForSeries(List<String> seriesList);
+    UpdatedContent getUpdatedSince (long timeDiff);
 
 }

@@ -15,7 +15,7 @@ public class TestJSONWorker {
 
         try {
             //System.out.println(worker.getSeriesById(seriesId));
-            //System.out.println(worker.getSeriesByName("Outlander"));
+            //System.out.println(worker.getBasicSeriesByName("Outlander"));
             System.out.println(worker.getEpisodeById(episodeId));
         } catch (Exception e) {
             e.printStackTrace();

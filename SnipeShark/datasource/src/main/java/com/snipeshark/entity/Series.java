@@ -7,8 +7,8 @@ import javax.persistence.*;
 
 @Entity
 @Access(AccessType.FIELD)
-@Table(name="SERIES")
-public class Series {
+@Table(name="SERIES", uniqueConstraints = @UniqueConstraint(columnNames = {"PROVIDER_ID", "PROVIDER"}))
+public class Series extends BaseModel{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="SERIES_ID")
@@ -58,7 +58,7 @@ public class Series {
 	private int status;
 
 	@OneToMany(mappedBy = "series")
-	private List<Season> seasonList;
+	private List<Season> seasons;
 
 	public long getSeriesID() {
 		return seriesID;
@@ -140,14 +140,6 @@ public class Series {
 		this.tvNetwork = tvNetwork;
 	}
 
-	public List<Season> getSeasonList() {
-		return seasonList;
-	}
-
-	public void setSeasonList(List<Season> seasonList) {
-		this.seasonList = seasonList;
-	}
-
 	public String getOverview() {
 		return overview;
 	}
@@ -186,5 +178,53 @@ public class Series {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Series)) return false;
+
+		Series series = (Series) o;
+
+		if (airDayOfWeek != series.airDayOfWeek) return false;
+		if (airTime != series.airTime) return false;
+		if (genre != series.genre) return false;
+		if (languageId != series.languageId) return false;
+		if (Float.compare(series.rating, rating) != 0) return false;
+		if (ratingCount != series.ratingCount) return false;
+		if (runtime != series.runtime) return false;
+		if (seriesID != series.seriesID) return false;
+		if (status != series.status) return false;
+		if (!contentRating.equals(series.contentRating)) return false;
+		if (!firstAired.equals(series.firstAired)) return false;
+		if (!imdbID.equals(series.imdbID)) return false;
+		if (!overview.equals(series.overview)) return false;
+		if (!seasons.equals(series.seasons)) return false;
+		if (!seriesName.equals(series.seriesName)) return false;
+		if (!tvNetwork.equals(series.tvNetwork)) return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = (int) (seriesID ^ (seriesID >>> 32));
+		result = 31 * result + seriesName.hashCode();
+		result = 31 * result + airDayOfWeek;
+		result = 31 * result + (int) (airTime ^ (airTime >>> 32));
+		result = 31 * result + contentRating.hashCode();
+		result = 31 * result + firstAired.hashCode();
+		result = 31 * result + genre;
+		result = 31 * result + imdbID.hashCode();
+		result = 31 * result + languageId;
+		result = 31 * result + tvNetwork.hashCode();
+		result = 31 * result + overview.hashCode();
+		result = 31 * result + (rating != +0.0f ? Float.floatToIntBits(rating) : 0);
+		result = 31 * result + ratingCount;
+		result = 31 * result + runtime;
+		result = 31 * result + status;
+		result = 31 * result + seasons.hashCode();
+		return result;
 	}
 }

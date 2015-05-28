@@ -8,8 +8,11 @@ public interface MediaSourceJSONFactory {
     String getSeriesById(String seriesId) throws Exception;
 
     //Skim version of the series
-    String getSeriesByName(String seriesName) throws Exception;
+    String getBasicSeriesByName(String seriesName) throws Exception;
 
+    String getFullSeriesById(String seriesId) throws Exception;
 
     String getEpisodeById(String episodeId) throws Exception;
+
+    String getUpdatesByTimeDiff(long timeDiff) throws Exception;
 }
