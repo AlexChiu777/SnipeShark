@@ -1,7 +1,7 @@
 package com.achome.snipeshark.provider.thetvdb.translator;
 
-import com.snipeshark.SSConstants;
-import com.snipeshark.model.*;
+import com.achome.snipeshark.SSConstants;
+import com.achome.snipeshark.model.*;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBData;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBEpisode;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBSeries;
@@ -21,6 +21,7 @@ public class TVDBTranslator {
         Provider provider = new Provider();
         provider.setProviderId(tvdbSeries.getId()); //tvdb id
         provider.setProviderTypeId(SSConstants.PROVIDER_TYPE_TVDB);
+        series.setProvider(provider);
 
         //-1 means null
         series.setAirTime(tvdbSeries.getAirTime() != null ? tvdbSeries.getAirTime().getTime() : 0);
@@ -30,7 +31,8 @@ public class TVDBTranslator {
         series.setFirstAired(tvdbSeries.getFirstAired());
         series.setImdbID(tvdbSeries.getImdb_id());
 
-        series.setAirDayOfWeek(tvdbSeries.getAirsDayOfWeek() != null ? DayOfWeek.valueOf(tvdbSeries.getAirsDayOfWeek().toUpperCase()).getValue() : -1); //convert from MONDAY to integer
+        series.setAirDayOfWeek(tvdbSeries.getAirsDayOfWeek() != null  && !tvdbSeries.getAirsDayOfWeek().isEmpty()
+                ? DayOfWeek.valueOf(tvdbSeries.getAirsDayOfWeek().toUpperCase()).getValue() : -1); //convert from MONDAY to integer
         series.setLanguage(tvdbSeries.getLanguage()); //convert
         series.setOverview(tvdbSeries.getOverview());
         series.setRating(tvdbSeries.getRating());
@@ -43,6 +45,7 @@ public class TVDBTranslator {
         TVNetwork network = new TVNetwork();
         network.setNetworkName(tvdbSeries.getNetwork());
         series.setTvNetwork(network);
+
 
         return series;
     }
@@ -65,7 +68,7 @@ public class TVDBTranslator {
 
                 Season season = new Season();
                 season.setProvider(seasonProvider);
-                season.setSeasonId(tvdbEpisode.getSeasonNumber());
+                season.setSeasonNumber(tvdbEpisode.getSeasonNumber());
                 season.getEpisodes().add(episode);
 
                 seasonHashMap.put(tvdbEpisode.getSeasonNumber(), season);

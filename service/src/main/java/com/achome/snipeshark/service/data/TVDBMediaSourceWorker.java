@@ -1,13 +1,14 @@
 package com.achome.snipeshark.service.data;
 
+
+import com.achome.snipeshark.model.Episode;
+import com.achome.snipeshark.model.Series;
+import com.achome.snipeshark.model.UpdatedContent;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBData;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBEpisode;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBSeries;
 import com.achome.snipeshark.provider.thetvdb.service.TVDBProcessor;
 import com.achome.snipeshark.provider.thetvdb.translator.TVDBTranslator;
-import com.snipeshark.model.Episode;
-import com.snipeshark.model.Series;
-import com.snipeshark.model.UpdatedContent;
 
 import java.util.ArrayList;
 import java.util.List;

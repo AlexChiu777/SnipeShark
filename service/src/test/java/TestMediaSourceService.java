@@ -1,4 +1,5 @@
-import com.snipeshark.model.Series;
+
+import com.achome.snipeshark.model.Series;
 import com.achome.snipeshark.service.data.TVDBMediaSourceWorker;
 
 /**

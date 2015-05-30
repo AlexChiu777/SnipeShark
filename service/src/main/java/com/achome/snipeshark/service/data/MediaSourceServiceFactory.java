@@ -1,8 +1,8 @@
 package com.achome.snipeshark.service.data;
 
-import com.snipeshark.model.Episode;
-import com.snipeshark.model.Series;
-import com.snipeshark.model.UpdatedContent;
+import com.achome.snipeshark.model.Episode;
+import com.achome.snipeshark.model.Series;
+import com.achome.snipeshark.model.UpdatedContent;
 
 import java.util.List;
 

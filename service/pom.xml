@@ -19,8 +19,8 @@
     <dependencies>
         <!--Core dependency-->
         <dependency>
-            <groupId>com.achome</groupId>
-            <artifactId>com.achome.snipeshark.core</artifactId>
+            <groupId>com.achome.snipeshark.core</groupId>
+            <artifactId>core</artifactId>
             <type>jar</type>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

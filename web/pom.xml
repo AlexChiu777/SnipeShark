@@ -5,13 +5,23 @@
         <groupId>com.achome.snipeshark</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>web</artifactId>
     <groupId>com.achome.snipeshark.web</groupId>
     <packaging>war</packaging>
     <name>web</name>
-    <url>http://maven.apache.org</url>
+   <url>http://maven.apache.org</url>
+
     <dependencies>
+        <dependency>
+            <groupId>com.achome.snipeshark.core</groupId>
+            <artifactId>core</artifactId>
+            <type>jar</type>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

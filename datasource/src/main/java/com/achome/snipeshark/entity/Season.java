@@ -2,7 +2,7 @@ package com.achome.snipeshark.entity;
 
 import com.achome.snipeshark.entity.primaryId.SeasonPK;
 import com.achome.snipeshark.entity.primaryId.SeasonPK;
-import com.snipeshark.model.*;
+import com.achome.snipeshark.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.util.List;
 @Access(AccessType.FIELD)
 @Table(name="SEASON", uniqueConstraints = @UniqueConstraint(columnNames = {"PROVIDER_ID", "PROVIDER"}))
 @IdClass(SeasonPK.class)
-public class Season extends com.snipeshark.model.Provider{
+public class Season extends Provider{
 	@Id
 	@Column(name = "SEASON_ID")
 	private long seasonId;

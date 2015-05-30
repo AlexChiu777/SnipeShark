@@ -1,6 +1,7 @@
 package com.achome.snipeshark.service.json;
 
-import com.snipeshark.SSConstants;
+
+import com.achome.snipeshark.SSConstants;
 import org.codehaus.jackson.map.ObjectMapper;
 import com.achome.snipeshark.provider.thetvdb.service.TVDBProcessor;
 

@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Season {
     private Series series;
-    private long seasonId;
+    private int seasonNumber;
     private List<Episode> episodes = new ArrayList<Episode>();
     private Provider provider;
 
@@ -20,12 +20,12 @@ public class Season {
         this.series = series;
     }
 
-    public long getSeasonId() {
-        return seasonId;
+    public int getSeasonNumber() {
+        return seasonNumber;
     }
 
-    public void setSeasonId(long seasonId) {
-        this.seasonId = seasonId;
+    public void setSeasonNumber(int seasonNumber) {
+        this.seasonNumber = seasonNumber;
     }
 
     public List<Episode> getEpisodes() {

@@ -13,6 +13,7 @@
 
     <groupId>com.achome.snipeshark.core</groupId>
     <artifactId>core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>core</name>
 

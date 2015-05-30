@@ -3,11 +3,9 @@ package com.achome.snipeshark.provider.thetvdb.service;
 import com.achome.snipeshark.provider.thetvdb.TVDBConstants;
 import com.achome.snipeshark.provider.thetvdb.model.*;
 import com.achome.snipeshark.provider.thetvdb.model.advanced.TVDBZip;
-import com.snipeshark.util.HttpUtil;
-import com.snipeshark.util.XmlUtil;
+import com.achome.snipeshark.util.HttpUtil;
+import com.achome.snipeshark.util.XmlUtil;
 import org.apache.commons.io.IOUtils;
-import com.achome.snipeshark.provider.thetvdb.TVDBConstants;
-import com.achome.snipeshark.provider.thetvdb.model.advanced.TVDBZip;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
