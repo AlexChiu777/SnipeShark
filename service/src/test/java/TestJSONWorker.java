@@ -1,4 +1,4 @@
-import service.json.TVDBMediaSourceJSONWorker;
+import com.achome.snipeshark.service.json.TVDBMediaSourceJSONWorker;
 
 /**
  * Created by Alex on 5/26/2015.

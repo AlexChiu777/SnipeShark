@@ -1,7 +1,7 @@
-import com.snipeshark.entity.Actor;
-import com.snipeshark.entity.Episode;
-import com.snipeshark.entity.Season;
-import com.snipeshark.entity.Series;
+import com.achome.snipeshark.entity.Actor;
+import com.achome.snipeshark.entity.Episode;
+import com.achome.snipeshark.entity.Season;
+import com.achome.snipeshark.entity.Series;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

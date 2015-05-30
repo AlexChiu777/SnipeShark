@@ -1,5 +1,5 @@
 import com.snipeshark.model.Series;
-import service.data.TVDBMediaSourceWorker;
+import com.achome.snipeshark.service.data.TVDBMediaSourceWorker;
 
 /**
  * Created by Alex on 5/27/2015.
