@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>WebSite</title>
+
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular-route.min.js"></script>
+
+
+    <!-- jquery - to prevent bootstrap error -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+
+    <!--Modules-->
+    <script src="app.routes.js"></script>
+    <script src="app.js"></script>
+    <script src="app.core.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.services.js"></script>
+
+
+    <!--Controllers-->
+    <script src="sections/tvsearch/tvsearch.ctrl.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="sections/home/home.css"/>
+
+    <!--SERVICES-->
+    <script src="services/show.fct.js"></script>
+
+    <!--DIRECTIVES-->
+    <script src="directives/ngEnter.drct.js"></script>
+</head>
+
+<body data-ng-app="app">
+<div class="container">
+    <section id="navigation">
+        <div class="navbar-static-top">
+            <div class="container">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#">home</a></li>
+                    <li><a href="#/tvsearch">tv search</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">Sign in</a></li>
+                    <li><a href="#">Sign up</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="Title">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hello World!</h1>
+
+                <p>Testing Hello World!!</p>
+
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="rows" align="center">
+            <div class="col-md-4">
+                <h3>Heading 1</h3>
+
+                <p>Heading 1 text</p>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Heading 2</h3>
+
+                <p>Heading 2 text</p>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Heading 3</h3>
+
+                <p>Heading 3 text</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <div class="footer">
+        <div class="container">
+            <footer class="footer">
+                <p>&copy; Alex Chiu 2015</p>
+            </footer>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
