@@ -13,6 +13,7 @@ public final class TVDBConstants {
     public static final String TV_DB_SERIES_URI = "/series/";
     public static final String TV_DB_EPISODES_URI = "/episodes/";
     public static final String TV_DB_ALL_URI = "/all/";
+    public static final String TV_DB_BANNERS_URI = "/banners/";
 
     public static final String TV_DB_UPDATE_URI = "/updates/";
     public static final String TV_DB_UPDATE_DAY = "updates_day";

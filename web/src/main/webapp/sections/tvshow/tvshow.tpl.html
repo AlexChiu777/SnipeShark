@@ -1,0 +1,46 @@
+<section id="tvshow" data-ng-controller="TVShowsController as tvshow">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#/tvshow/recent">Recently Added Shows</a></li>
+        <li><a href="#/tvshow/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+    </ul>
+
+    <section id="recentlyAdded" data-ng-if="!tvshow.toggle">
+        <h1>Recently Added</h1>
+    </section>
+
+
+    <!--list of tv show banners here or something-->
+
+    <section id="tvshowSearch" data-ng-if="tvshow.toggle">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-search"></span>
+            </span>
+            <input type="text" class="form-control" placeholder="TV SHOW" data-ng-model="tvshow.data"
+                   data-ng-enter="tvshow.getTVSeriesByName()"/>
+
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-info search-btn" data-ng-disabled="!tvshow.data"
+                        data-ng-click="tvshow.getTVSeriesByName()"><span class="glyphicon glyphicon-search"></span>
+                    Search
+                </button>
+            </span>
+        </div>
+
+        <div class="container" data-ng-if="tvshow.activeSearch">
+            <div class="search-results">
+                <div class="no-data" data-ng-if="tvshow.shows.length == 0 && tvshow.loading == false">Your search did
+                    not
+                    return any results
+                </div>
+
+                <ul class="list-of-shows" data-ng-show="tvshow.loading == false">
+                    <li class="repeat-animation" data-ng-repeat="show in tvshow.shows">
+                        <img data-ng-src="{{show.banner}}"/>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+</section>

@@ -43,6 +43,36 @@ public class Series {
 
     private long lastUpdated;
 
+    private String banner;
+
+    private String fanart;
+
+    private String poster;
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
+
+    public String getFanart() {
+        return fanart;
+    }
+
+    public void setFanart(String fanart) {
+        this.fanart = fanart;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     public long getLastUpdated() {
         return lastUpdated;
     }

@@ -2,6 +2,7 @@ package com.achome.snipeshark.provider.thetvdb.translator;
 
 import com.achome.snipeshark.SSConstants;
 import com.achome.snipeshark.model.*;
+import com.achome.snipeshark.provider.thetvdb.TVDBConstants;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBData;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBEpisode;
 import com.achome.snipeshark.provider.thetvdb.model.TVDBSeries;
@@ -40,6 +41,10 @@ public class TVDBTranslator {
         series.setSeriesName(tvdbSeries.getSeriesName());
         series.setStatus(tvdbSeries.getStatus()); //convert
         series.setLastUpdated(tvdbSeries.getLastUpdated());
+        series.setBanner(tvdbSeries.getBanner() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getBanner() : null);
+        series.setFanart(tvdbSeries.getFanart() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getFanart() : null);
+        series.setPoster(tvdbSeries.getPoster() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getPoster() : null);
+
         //series.setSeriesID(); --should be auto set later
 
         TVNetwork network = new TVNetwork();
@@ -100,6 +105,7 @@ public class TVDBTranslator {
         episode.setLanguage(tvdbEpisode.getLanguage());
         episode.setFirstAired(tvdbEpisode.getFirstAired());
         episode.setLastUpdated(tvdbEpisode.getLastUpdated());
+        episode.setImage(episode.getImage() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbEpisode.getFilename() : null);
 
         Provider provider = new Provider();
         provider.setProviderTypeId(SSConstants.PROVIDER_TYPE_TVDB);

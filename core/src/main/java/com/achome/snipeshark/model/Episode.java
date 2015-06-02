@@ -18,6 +18,7 @@ public class Episode {
     private int absoluteNumber;
     private int airBeforeSeason;
     private long lastUpdated;
+    private String image;
 
     private List<String> guestStars;
     private Season season;
@@ -27,6 +28,14 @@ public class Episode {
     //seriesId and seasonId is only used when we find episodeById
     private long seriesId;
     private long seasonId;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public long getEpisodeId() {
         return episodeId;

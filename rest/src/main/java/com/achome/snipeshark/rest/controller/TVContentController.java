@@ -18,7 +18,11 @@ import java.io.IOException;
 @RequestMapping("/tv")
 public class TVContentController {
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static TVDBMediaSourceWorker worker = new TVDBMediaSourceWorker(SSConstants.TVDB_API_KEY, SSConstants.LANGUAGE_ENGLISH);;
+    private static TVDBMediaSourceWorker worker = new TVDBMediaSourceWorker(SSConstants.TVDB_API_KEY, SSConstants.LANGUAGE_ENGLISH);
+
+    //To get banners or fanarts
+    //http://thetvdb.com/banners/fanart/original/80348-48.jpg
+    //http://thetvdb.com/banners/banner/original/80348-48.jpg
 
     @RequestMapping(value = "/series/name/{name}", method = RequestMethod.GET)
     public String getSeriesByName(@PathVariable String name) throws IOException{
