@@ -35,7 +35,10 @@ public class TVDBMediaSourceWorker implements MediaSourceServiceFactory {
 
             for (TVDBSeries tvdbSeries : data.getSeries()) {
                 //for each, we will translate into real series objects and pass it back as a list
-                seriesList.add(translator.translateTVDBSeriesToSeries(tvdbSeries));
+                Series series = translator.translateTVDBSeriesToSeries(tvdbSeries);
+                if (series != null) {
+                    seriesList.add(series);
+                }
             }
 
         }

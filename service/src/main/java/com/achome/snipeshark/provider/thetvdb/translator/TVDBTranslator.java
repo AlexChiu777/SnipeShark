@@ -17,6 +17,10 @@ import java.util.List;
  */
 public class TVDBTranslator {
     public Series translateTVDBSeriesToSeries(TVDBSeries tvdbSeries) {
+        if (tvdbSeries.getOverview() == null || tvdbSeries.getOverview().isEmpty()) {
+            return null;
+        }
+
         Series series = new Series();
 
         Provider provider = new Provider();
@@ -32,7 +36,7 @@ public class TVDBTranslator {
         series.setFirstAired(tvdbSeries.getFirstAired());
         series.setImdbID(tvdbSeries.getImdb_id());
 
-        series.setAirDayOfWeek(tvdbSeries.getAirsDayOfWeek() != null  && !tvdbSeries.getAirsDayOfWeek().isEmpty()
+        series.setAirDayOfWeek(tvdbSeries.getAirsDayOfWeek() != null && !tvdbSeries.getAirsDayOfWeek().isEmpty()
                 ? DayOfWeek.valueOf(tvdbSeries.getAirsDayOfWeek().toUpperCase()).getValue() : -1); //convert from MONDAY to integer
         series.setLanguage(tvdbSeries.getLanguage()); //convert
         series.setOverview(tvdbSeries.getOverview());
@@ -124,8 +128,10 @@ public class TVDBTranslator {
         if (data != null && data.getSeries().size() > 0) {
             series = translateTVDBSeriesToSeries(data.getSeries().get(0));
 
-            if (data.getEpisodes() != null && data.getEpisodes().size() > 0) {
-                series.setSeasons(translateTVDBEpisodeToSeasons(data.getEpisodes()));
+            if (series != null) {
+                if (data.getEpisodes() != null && data.getEpisodes().size() > 0) {
+                    series.setSeasons(translateTVDBEpisodeToSeasons(data.getEpisodes()));
+                }
             }
         }
 

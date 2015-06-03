@@ -14,24 +14,6 @@ function config ($routeProvider) {
             templateUrl: 'sections/tvshow/tvshow.tpl.html',
             controller: 'TVShowsController as tvshow'
         })
-        .when('/tvshow/search', {
-            templateUrl: 'sections/tvshow/tvshow.tpl.html',
-            controller: 'TVShowsController as tvshow',
-            resolve: {
-                toggle: function() {
-                    return true;
-                }
-            }
-        })
-        .when('/tvshow/recent', {
-            templateUrl: 'sections/tvshow/tvshow.tpl.html',
-            controller: 'TVShowsController as tvshow',
-            resolve: {
-                toggle: function() {
-                    return false;
-                }
-            }
-        })
         .when('/movies', {
             templateUrl: 'sections/movies/movies.tpl.html'
         })

@@ -1,46 +1,89 @@
 <section id="tvshow" data-ng-controller="TVShowsController as tvshow">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#/tvshow/recent">Recently Added Shows</a></li>
-        <li><a href="#/tvshow/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+        <li data-ng-class="{'active' : tvshow.toggleItem == 'popular'}"
+            data-ng-class="{'active' : tvshow.toggleItem == 'popular'}">
+            <a href="#/tvshow" data-ng-click="tvshow.toggleItem = 'popular'">Popular</a>
+        </li>
+        <li data-ng-class="{'active' : tvshow.toggleItem == 'upcoming'}"
+            data-ng-class="{'active' : tvshow.toggleItem == 'upcoming'}">
+            <a href="#/tvshow" data-ng-click="tvshow.toggleItem = 'upcoming'">Upcoming</a>
+        </li>
+        <li data-ng-class="{'active' : tvshow.toggleItem == 'recent'}"
+            data-ng-class="{'active' : tvshow.toggleItem == 'recent'}">
+            <a href="#/tvshow" data-ng-click="tvshow.toggleItem = 'recent'">Recently Added Shows</a>
+        </li>
+        <li data-ng-class="{'active' : tvshow.toggleItem == 'search'}" data-ng-click="tvshow.toggleItem = 'search'">
+            <a href="#/tvshow" data-ng-click="tvshow.toggleItem = 'search'">
+                <span class="glyphicon glyphicon-search" data-ng-click="tvshow.toggleItem = 'search'"></span>
+                Search</a>
+        </li>
     </ul>
 
-    <section id="recentlyAdded" data-ng-if="!tvshow.toggle">
-        <h1>Recently Added</h1>
-    </section>
+
+    <section id="tvshow-contents">
+        <div class="content">
+            <section id="recentlyAdded" data-ng-if="tvshow.toggleMenu('recent')">
+                <h1>Recently Added</h1>
+            </section>
 
 
-    <!--list of tv show banners here or something-->
+            <!--list of tv show banners here or something-->
 
-    <section id="tvshowSearch" data-ng-if="tvshow.toggle">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-search"></span>
-            </span>
-            <input type="text" class="form-control" placeholder="TV SHOW" data-ng-model="tvshow.data"
-                   data-ng-enter="tvshow.getTVSeriesByName()"/>
+            <section id="tvshowSearch" data-ng-if="tvshow.toggleMenu('search')">
+                <div class="input-group searchbar">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="TV SHOW" data-ng-model="tvshow.data"
+                           data-ng-enter="tvshow.getTVSeriesByName()"/>
 
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-info search-btn" data-ng-disabled="!tvshow.data"
-                        data-ng-click="tvshow.getTVSeriesByName()"><span class="glyphicon glyphicon-search"></span>
-                    Search
-                </button>
-            </span>
-        </div>
-
-        <div class="container" data-ng-if="tvshow.activeSearch">
-            <div class="search-results">
-                <div class="no-data" data-ng-if="tvshow.shows.length == 0 && tvshow.loading == false">Your search did
-                    not
-                    return any results
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info search-btn" data-ng-disabled="!tvshow.data"
+                                data-ng-click="tvshow.getTVSeriesByName()"><span
+                                class="glyphicon glyphicon-search"></span>
+                            Search
+                        </button>
+                    </span>
                 </div>
 
-                <ul class="list-of-shows" data-ng-show="tvshow.loading == false">
-                    <li class="repeat-animation" data-ng-repeat="show in tvshow.shows">
-                        <img data-ng-src="{{show.banner}}"/>
-                    </li>
-                </ul>
 
-            </div>
+                <div class="search-results" data-ng-if="tvshow.toggleMenu('search')">
+                    <div class="no-data" data-ng-if="tvshow.shows.length == 0 && tvshow.loading == false">Your
+                        search
+                        did
+                        not
+                        return any results
+                    </div>
+
+                    <!--<ul class="list-of-shows" data-ng-show="tvshow.loading == false">
+                        <li class="repeat-animation" data-ng-repeat="show in tvshow.shows">-->
+                    <div class="row" data-ng-show="tvshow.loading == false">
+                        <div class="col-sm-6 col-md-6" data-ng-repeat="show in tvshow.shows">
+                            <div class="thumbnail">
+                                <img data-ng-src="{{show.banner}}">
+
+                                <div class="caption">
+                                    <h3>{{show.seriesName}}</h3>
+                                    {{show.pagedOverview.length}}
+                                    {{show.currentPage}}
+
+                                    <!--<pagination total-items="show.pagedOverview" data-ng-model="show.currentPage"></pagination>-->
+                                    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+                                    <pager total-items="show.pagedOverview" data-ng-model="show.currentPage"></pager>
+                                    <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#"
+                                                                                                       class="btn btn-default"
+                                                                                                       role="button">Button</a>
+                                    </p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</li>
+                </ul>-->
+
+                </div>
+
+            </section>
         </div>
     </section>
 </section>
