@@ -1,0 +1,87 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+	position: relative;
+	margin: 0px;
+	height: 75%;
+	width: 75%;
+	overflow: hidden;
+}
+
+.caption {
+	display: table;
+	position: absolute;
+	top: 15px;
+	left: 1%;
+	right: 8%;
+	background: rgba(0, 0, 0, 0.2);
+	width: 98%;
+	height: 5%;
+	padding: 5px;
+
+}
+
+.caption p {
+	padding: 0;
+	color: #fff;
+	margin: 0;
+	font-weight: bold;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.thumbnail h3 {
+	position: relative;
+	margin-top: 5px;
+	width: 30%;
+	margin-right: 0;
+}
+
+.overview .overviewExpander {
+	position: relative;
+	float: right;
+}
+
+.overviewStyle {
+	margin: 0px;
+	padding: 2%;
+	opacity: 0.9;
+}
+
+.showheader {
+	padding: 0;
+}
+
+.showheader li {
+	display: table-cell;
+}
+
+.rating {
+	position: relative;
+	left: 50%;
+
+}
+
+.ratinglabel {
+	padding : 10%;
+	border-radius: 20%;
+	border: 0.1em solid black;
+	color: black;
+	margin-right: 30%;
+}
+
+.moreInfo {
+	padding: 2%;
+	text-align:center;
+}
+
+.caption .title {
+	float:left;
+}
+
+.caption .likelabel {
+	padding: 1%;
+	float:right;
+	margin: 0;
+}

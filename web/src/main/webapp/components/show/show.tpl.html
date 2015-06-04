@@ -1,0 +1,54 @@
+<div class="thumbnail">
+	<div class="caption">
+		<p class="title">Game of Thrones</p>
+		<span class="label label-info likelabel" ng-click="isLiked = !isLiked" data-ng-show="isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
+		<span class="label label-info likelabel" ng-click="isLiked = !isLiked" data-ng-show="!isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
+	</div>
+	<img src="/asset/got-logo.jpg">
+
+	<div class="well well-lg overviewStyle" ng-controller="ShowController">
+		<div class="overview">
+			<ul class="showheader">
+				<li><h3>Synopsis</h3></li>
+				<li class="rating"><span class="ratinglabel">7.5</span></li>
+				<li class="rating">
+					<rating ng-model="rate" max="max" readonly="!isReadonly"></rating>
+				</li>
+
+			</ul>
+
+			<div class="overviewExpander">
+						<span class="glyphicon glyphicon-collapse-down" aria-hidden="true"
+							  ng-click="isCollapsed = !isCollapsed" data-ng-show="isCollapsed"></span>
+						<span class="glyphicon glyphicon-collapse-up" aria-hidden="true"
+							  ng-click="isCollapsed = !isCollapsed" data-ng-show="!isCollapsed"></span>
+			</div>
+
+			Depending on datepicker's current mode, the date may reffer either
+			to day, month or year. Accordingly, the term view reffers either to
+			a month, year or year range. <span collapse="isCollapsed">
+						Left: Move focus to the previous date. Will move to the last date
+						of the previous view, if the current date is the first date of a
+						view. Right: Move focus to the next date. Will move to the first
+						date of the following view, if the current date is the last date
+						of a view. Up: Move focus to the same column of the previous row.
+						Will wrap to the appropriate row in the previous view. Down: Move
+						focus to the same column of the following row. Will wrap to the
+						appropriate row in the following view. PgUp: Move focus to the
+						same date of the previous view. If that date does not exist, focus
+						is placed on the last date of the month. PgDn: Move focus to the
+						same date of the following view. If that date does not exist,
+						focus is placed on the last date of the month. Home: Move to the
+						first date of the view. End: Move to the last date of the view.
+						Enter/Space: Select date. </span>
+
+
+		</div>
+	</div>
+	<div class="moreInfo">
+		<button type="button" class="btn btn-default"><span
+				class="glyphicon glyphicon-eye-open"></span>
+			More Information
+		</button>
+	</div>
+</div>
