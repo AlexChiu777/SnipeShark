@@ -1,32 +1,37 @@
-<div class="thumbnail">
+<div class="thumbnail" ng-controller="ShowController as show">
 	<div class="caption">
 		<p class="title">Game of Thrones</p>
-		<span class="label label-info likelabel" ng-click="isLiked = !isLiked" data-ng-show="isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
-		<span class="label label-info likelabel" ng-click="isLiked = !isLiked" data-ng-show="!isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
+		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="show.isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
+		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="!show.isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
 	</div>
 	<img src="/asset/got-logo.jpg">
+	<ul class="nav nav-pills genrecontainer">
+		<li data-ng-repeat="genre in show.genres" data-ng-style="{'background-color': 'rgba(78, 78, 79, ' + show.genres.length / ($index + 1) / 5 + ')'}">
+			{{genre}}
+		</li>
+	</ul>
 
-	<div class="well well-lg overviewStyle" ng-controller="ShowController">
+	<div class="well well-lg overviewStyle">
 		<div class="overview">
 			<ul class="showheader">
 				<li><h3>Synopsis</h3></li>
-				<li class="rating"><span class="ratinglabel">7.5</span></li>
+				<li/>
+				<li class="ratingLabelContainer"><span class="ratinglabel">7.5</span></li>
 				<li class="rating">
-					<rating ng-model="rate" max="max" readonly="!isReadonly"></rating>
+					<rating ng-model="show.rate" max="show.max" readonly="!show.isReadonly"></rating>
 				</li>
-
 			</ul>
 
 			<div class="overviewExpander">
 						<span class="glyphicon glyphicon-collapse-down" aria-hidden="true"
-							  ng-click="isCollapsed = !isCollapsed" data-ng-show="isCollapsed"></span>
+							  ng-click="show.isCollapsed = !show.isCollapsed" data-ng-show="show.isCollapsed"></span>
 						<span class="glyphicon glyphicon-collapse-up" aria-hidden="true"
-							  ng-click="isCollapsed = !isCollapsed" data-ng-show="!isCollapsed"></span>
+							  ng-click="show.isCollapsed = !show.isCollapsed" data-ng-show="!show.isCollapsed"></span>
 			</div>
 
 			Depending on datepicker's current mode, the date may reffer either
 			to day, month or year. Accordingly, the term view reffers either to
-			a month, year or year range. <span collapse="isCollapsed">
+			a month, year or year range. <span collapse="show.isCollapsed">
 						Left: Move focus to the previous date. Will move to the last date
 						of the previous view, if the current date is the first date of a
 						view. Right: Move focus to the next date. Will move to the first

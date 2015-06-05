@@ -34,7 +34,7 @@
 .thumbnail h3 {
 	position: relative;
 	margin-top: 5px;
-	width: 30%;
+
 	margin-right: 0;
 }
 
@@ -44,31 +44,36 @@
 }
 
 .overviewStyle {
-	margin: 0px;
+	margin: 0;
 	padding: 2%;
 	opacity: 0.9;
 }
 
 .showheader {
 	padding: 0;
+	text-align: left;
 }
 
 .showheader li {
-	display: table-cell;
+	display: inline-flex;
+
+}
+
+.ratingLabelContainer {
+	padding-left:30%;
 }
 
 .rating {
 	position: relative;
-	left: 50%;
-
+	padding-left:2%;
 }
 
 .ratinglabel {
+	align-content: flex-start;
 	padding : 10%;
 	border-radius: 20%;
 	border: 0.1em solid black;
 	color: black;
-	margin-right: 30%;
 }
 
 .moreInfo {
@@ -84,4 +89,15 @@
 	padding: 1%;
 	float:right;
 	margin: 0;
+}
+
+.genrecontainer li {
+	font-size: 8pt;
+	padding: 1%;
+	color: #000;
+}
+
+.genrecontainer {
+	text-align: center;
+	align-content: center;
 }

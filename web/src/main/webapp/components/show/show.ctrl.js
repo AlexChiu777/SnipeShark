@@ -1,8 +1,15 @@
 'use strict';
-angular.module('app.services').controller('ShowController', function($scope) {
-	$scope.isCollapsed = true;
-	$scope.isReadOnly = true;
-	$scope.rate = 7;
-	$scope.max = 10;
-	$scope.isLiked = false;
+angular.module('app.services').controller('ShowController', function() {
+	var vm = this;
+
+	vm.isCollapsed = true;
+	vm.genres = ["horror", "mystery", "adventure"];
+	vm.genreColor = 'label-default';
+
+
+	vm.isCollapsed = true;
+	vm.isReadOnly = true;
+	vm.rate = 7;
+	vm.max = 10;
+	vm.isLiked = false;
 })
