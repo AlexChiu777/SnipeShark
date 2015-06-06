@@ -49,6 +49,8 @@ public class Series {
 
     private String poster;
 
+    private String url;
+
     public String getBanner() {
         return banner;
     }
@@ -215,5 +217,13 @@ public class Series {
 
     public void setProvider(Provider provider) {
         this.provider = provider;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

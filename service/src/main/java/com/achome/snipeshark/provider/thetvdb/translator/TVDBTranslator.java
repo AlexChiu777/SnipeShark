@@ -36,8 +36,16 @@ public class TVDBTranslator {
         series.setFirstAired(tvdbSeries.getFirstAired());
         series.setImdbID(tvdbSeries.getImdb_id());
 
-        series.setAirDayOfWeek(tvdbSeries.getAirsDayOfWeek() != null && !tvdbSeries.getAirsDayOfWeek().isEmpty()
-                ? DayOfWeek.valueOf(tvdbSeries.getAirsDayOfWeek().toUpperCase()).getValue() : -1); //convert from MONDAY to integer
+        if (tvdbSeries.getAirsDayOfWeek() != null && !tvdbSeries.getAirsDayOfWeek().isEmpty()) {
+            if (tvdbSeries.getAirsDayOfWeek().toLowerCase().equals("daily")) {
+                series.setAirDayOfWeek(8); // for daily
+            } else {
+                series.setAirDayOfWeek(DayOfWeek.valueOf(tvdbSeries.getAirsDayOfWeek().toUpperCase()).getValue()); //convert from MONDAY to integer
+            }
+        } else {
+            series.setAirDayOfWeek(-1); //for cannot define
+        }
+
         series.setLanguage(tvdbSeries.getLanguage()); //convert
         series.setOverview(tvdbSeries.getOverview());
         series.setRating(tvdbSeries.getRating());
@@ -45,9 +53,11 @@ public class TVDBTranslator {
         series.setSeriesName(tvdbSeries.getSeriesName());
         series.setStatus(tvdbSeries.getStatus()); //convert
         series.setLastUpdated(tvdbSeries.getLastUpdated());
-        series.setBanner(tvdbSeries.getBanner() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getBanner() : null);
-        series.setFanart(tvdbSeries.getFanart() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getFanart() : null);
-        series.setPoster(tvdbSeries.getPoster() != null ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getPoster() : null);
+        series.setBanner(tvdbSeries.getBanner() != null && !tvdbSeries.getBanner().isEmpty() ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getBanner() : null);
+        series.setFanart(tvdbSeries.getFanart() != null && !tvdbSeries.getFanart().isEmpty() ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getFanart() : null);
+        series.setPoster(tvdbSeries.getPoster() != null && !tvdbSeries.getPoster().isEmpty() ? TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BANNERS_URI + tvdbSeries.getPoster() : null);
+
+        series.setUrl(TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_BASIC_SERIES_URI + series.getSeriesID());
 
         //series.setSeriesID(); --should be auto set later
 

@@ -1,10 +1,10 @@
-<div class="thumbnail" ng-controller="ShowController as show">
+<div class="thumbnail">
 	<div class="caption">
-		<p class="title">Game of Thrones</p>
+		<p class="title">{{show.seriesName}}</p>
 		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="show.isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
 		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="!show.isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
 	</div>
-	<img src="/asset/got-logo.jpg">
+	<img src="{{show.fanart}}" alt="{{show.poster}}" data-ng-hide="show.fanart == null && show.poster == null">
 	<ul class="nav nav-pills genrecontainer">
 		<li data-ng-repeat="genre in show.genres" data-ng-style="{'background-color': 'rgba(78, 78, 79, ' + show.genres.length / ($index + 1) / 5 + ')'}">
 			{{genre}}
@@ -16,9 +16,9 @@
 			<ul class="showheader">
 				<li><h3>Synopsis</h3></li>
 				<li/>
-				<li class="ratingLabelContainer"><span class="ratinglabel">7.5</span></li>
+				<li class="ratingLabelContainer" data-ng-show="show.rating != 0"><span class="ratinglabel">{{show.rating}}</span></li>
 				<li class="rating">
-					<rating ng-model="show.rate" max="show.max" readonly="!show.isReadonly"></rating>
+					<rating ng-model="show.rating" max="10" readonly="true" data-ng-show="show.rating != 0"></rating>
 				</li>
 			</ul>
 
@@ -29,23 +29,7 @@
 							  ng-click="show.isCollapsed = !show.isCollapsed" data-ng-show="!show.isCollapsed"></span>
 			</div>
 
-			Depending on datepicker's current mode, the date may reffer either
-			to day, month or year. Accordingly, the term view reffers either to
-			a month, year or year range. <span collapse="show.isCollapsed">
-						Left: Move focus to the previous date. Will move to the last date
-						of the previous view, if the current date is the first date of a
-						view. Right: Move focus to the next date. Will move to the first
-						date of the following view, if the current date is the last date
-						of a view. Up: Move focus to the same column of the previous row.
-						Will wrap to the appropriate row in the previous view. Down: Move
-						focus to the same column of the following row. Will wrap to the
-						appropriate row in the following view. PgUp: Move focus to the
-						same date of the previous view. If that date does not exist, focus
-						is placed on the last date of the month. PgDn: Move focus to the
-						same date of the following view. If that date does not exist,
-						focus is placed on the last date of the month. Home: Move to the
-						first date of the view. End: Move to the last date of the view.
-						Enter/Space: Select date. </span>
+			{{show.overviewPart1}}<span collapse="show.isCollapsed">{{show.overviewPart2}}</span>
 
 
 		</div>

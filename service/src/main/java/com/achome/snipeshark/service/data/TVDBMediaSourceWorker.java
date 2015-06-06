@@ -13,9 +13,10 @@ import com.achome.snipeshark.provider.thetvdb.translator.TVDBTranslator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Alex on 5/26/2015.
- */
+/*
+        *Created by Alex on 5/26/2015.
+*/
+
 public class TVDBMediaSourceWorker implements MediaSourceServiceFactory {
     private TVDBProcessor processor;
     private static final TVDBTranslator translator = new TVDBTranslator();
@@ -28,14 +29,14 @@ public class TVDBMediaSourceWorker implements MediaSourceServiceFactory {
     public List<Series> getBasicSeriesByName(String seriesName) {
         List<Series> seriesList = null;
 
-        TVDBData data = processor.getTVDBSeriesInfoByName(seriesName);
+        TVDBData basicSeriesData = processor.getTVDBSeriesInfoByName(seriesName);
 
-        if (data != null && data.getSeries().size() > 0) {
+        if (basicSeriesData != null && basicSeriesData.getSeries().size() > 0) {
             seriesList = new ArrayList<Series>();
 
-            for (TVDBSeries tvdbSeries : data.getSeries()) {
+            for (TVDBSeries tvdbBasicSeries : basicSeriesData.getSeries()) {
                 //for each, we will translate into real series objects and pass it back as a list
-                Series series = translator.translateTVDBSeriesToSeries(tvdbSeries);
+                Series series = translator.translateTVDBSeriesToSeries(tvdbBasicSeries);
                 if (series != null) {
                     seriesList.add(series);
                 }

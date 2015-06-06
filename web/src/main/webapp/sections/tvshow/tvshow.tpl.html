@@ -28,7 +28,6 @@
 
 
             <!--list of tv show banners here or something-->
-
             <section id="tvshowSearch" data-ng-if="tvshow.toggleMenu('search')">
                 <div class="input-group searchbar">
                     <span class="input-group-addon">
@@ -55,33 +54,29 @@
                         return any results
                     </div>
 
-                    <!--<ul class="list-of-shows" data-ng-show="tvshow.loading == false">
-                        <li class="repeat-animation" data-ng-repeat="show in tvshow.shows">-->
-                    <div class="row" data-ng-show="tvshow.loading == false">
-                        <div class="col-sm-6 col-md-6" data-ng-repeat="show in tvshow.shows">
-                            <div class="thumbnail">
-                                <img data-ng-src="{{show.banner}}">
 
-                                <div class="caption">
-                                    <h3>{{show.seriesName}}</h3>
-                                    {{show.pagedOverview.length}}
-                                    {{show.currentPage}}
-
-                                    <!--<pagination total-items="show.pagedOverview" data-ng-model="show.currentPage"></pagination>-->
-                                    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
-                                    <pager total-items="show.pagedOverview" data-ng-model="show.currentPage"></pager>
-                                    <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#"
-                                                                                                       class="btn btn-default"
-                                                                                                       role="button">Button</a>
-                                    </p>-->
+                    <div data-ng-show="tvshow.loading == false" data-ng-repeat="show in tvshow.shows">
+                        <div class="panel" data-ng-class="tvshow.panelClass[$index%5]">
+                            <div class="panel-heading"><h3 class="panel-title" data-ng-click="tvshow.collapseShowDetail(show.provider.providerId, $index)">{{show.seriesName}}</h3></div>
+                            <div class="panel-body" data-ng-show="show.isDetails">
+                                <div class="col-sm-12 col-md-12 pull-center">
+                                    <show data-show="show"></show>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--</li>
-                </ul>-->
 
-                </div>
+<!--                    <div class="row" data-ng-show="tvshow.loading == false">
+                        <ul class="list-group" data-ng-repeat="show in tvshow.shows">
+                        <li class="list-group-item">{{show.seriesName}}</li>
+                    </ul>-->
+                        <!--&lt;!&ndash;this should be shown only if a show is clicked &ndash;&gt;
+                        <div class="col-sm-6 col-md-6" data-ng-repeat="show in tvshow.shows">
+                            <show data-show="show"></show>
+                        </div>-->
+                    </div>
+
+
 
             </section>
         </div>

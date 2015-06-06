@@ -10,7 +10,7 @@ public final class TVDBConstants {
     public static final String TV_DB_SERVER_TIME_URI = "Updates.php?type=none";
     public static final String TV_DB_GET_SERIES_URI = "GetSeries.php?seriesname=";
 
-    public static final String TV_DB_SERIES_URI = "/series/";
+    public static final String TV_DB_SERIES_QUERY_URI = "/series/";
     public static final String TV_DB_EPISODES_URI = "/episodes/";
     public static final String TV_DB_ALL_URI = "/all/";
     public static final String TV_DB_BANNERS_URI = "/banners/";
@@ -23,6 +23,12 @@ public final class TVDBConstants {
 
     public static final String TV_DB_ZIP_BANNERS = "banners";
     public static final String TV_DB_ZIP_ACTORS = "actors";
+
+    public static final String TV_DB_BASIC_SERIES_URI = "?tab=series&id=";
+
+
+
+
 
     public static final long DAY_IN_SECONDS = 86400;
     public static final long WEEK_IN_SECONDS = 604800;

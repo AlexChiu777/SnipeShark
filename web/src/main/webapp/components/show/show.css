@@ -5,7 +5,7 @@
 .thumbnail {
 	position: relative;
 	margin: 0px;
-	height: 75%;
+	height: 50%;
 	width: 75%;
 	overflow: hidden;
 }
@@ -41,6 +41,7 @@
 .overview .overviewExpander {
 	position: relative;
 	float: right;
+	left:1%;
 }
 
 .overviewStyle {
@@ -60,20 +61,12 @@
 }
 
 .ratingLabelContainer {
-	padding-left:30%;
+	padding-left:20%;
 }
 
 .rating {
 	position: relative;
 	padding-left:2%;
-}
-
-.ratinglabel {
-	align-content: flex-start;
-	padding : 10%;
-	border-radius: 20%;
-	border: 0.1em solid black;
-	color: black;
 }
 
 .moreInfo {

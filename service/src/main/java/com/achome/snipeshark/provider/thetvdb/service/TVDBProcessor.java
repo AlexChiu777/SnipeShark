@@ -55,7 +55,7 @@ public class TVDBProcessor {
     //get series content in a zip format
     public TVDBZip getTVDBZipFileContent(String seriesId) {
         TVDBZip tvdbZip = new TVDBZip();
-        String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey + TVDBConstants.TV_DB_SERIES_URI
+        String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey + TVDBConstants.TV_DB_SERIES_QUERY_URI
                 + seriesId + TVDBConstants.TV_DB_ALL_URI + language + TVDBConstants.ZIP_EXTENSION;
 
         byte[] zipBytes = HttpUtil.getInstance().getTwoWayToByteArray(url);
@@ -88,7 +88,7 @@ public class TVDBProcessor {
     //get series content by series id
     public TVDBData getTVDBSeriesInfoById(String seriesId) {
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey +
-                TVDBConstants.TV_DB_SERIES_URI + seriesId + TVDBConstants.URL_DIVIDER + language + TVDBConstants.XML_EXTENSION;
+                TVDBConstants.TV_DB_SERIES_QUERY_URI + seriesId + TVDBConstants.URL_DIVIDER + language + TVDBConstants.XML_EXTENSION;
 
         String xml = HttpUtil.getInstance().getTwoWayMessage(url);
 
@@ -99,7 +99,7 @@ public class TVDBProcessor {
     //get series content and episode content
     public TVDBData getTVDBFullSeriesInfoById(String seriesId) {
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey +
-                TVDBConstants.TV_DB_SERIES_URI + seriesId + TVDBConstants.TV_DB_ALL_URI + language + TVDBConstants.XML_EXTENSION;
+                TVDBConstants.TV_DB_SERIES_QUERY_URI + seriesId + TVDBConstants.TV_DB_ALL_URI + language + TVDBConstants.XML_EXTENSION;
 
         String xml = HttpUtil.getInstance().getTwoWayMessage(url);
 
