@@ -9,7 +9,7 @@ import com.achome.snipeshark.provider.thetvdb.service.TVDBProcessor;
  * Created by Alex on 5/26/2015.
  */
 public class TVDBMediaSourceJSONWorker implements MediaSourceJSONFactory {
-    private TVDBProcessor processor;
+    private static TVDBProcessor processor;
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public TVDBMediaSourceJSONWorker(String apiKey) {

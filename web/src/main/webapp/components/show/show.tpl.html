@@ -1,17 +1,21 @@
 <div class="thumbnail">
 	<div class="caption">
 		<p class="title">{{show.seriesName}}</p>
-		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="show.isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
-		<span class="label label-info likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="!show.isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
+		<span class="label label-danger likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="show.isLiked"><span class="glyphicon glyphicon-star-empty"></span> Like</span>
+		<span class="label label-success likelabel" ng-click="show.isLiked = !show.isLiked" data-ng-show="!show.isLiked"><span class="glyphicon glyphicon-star"></span> Like</span>
 	</div>
-	<img src="{{show.fanart}}" alt="{{show.poster}}" data-ng-hide="show.fanart == null && show.poster == null">
-	<ul class="nav nav-pills genrecontainer">
+
+	<img src="{{show.fanart}}">
+
+	<!--<ul class="nav nav-pills genrecontainer">
 		<li data-ng-repeat="genre in show.genres" data-ng-style="{'background-color': 'rgba(78, 78, 79, ' + show.genres.length / ($index + 1) / 5 + ')'}">
 			{{genre}}
 		</li>
-	</ul>
+	</ul>-->
 
-	<div class="well well-lg overviewStyle">
+
+
+	<!--<div class="well well-lg overviewStyle">
 		<div class="overview">
 			<ul class="showheader">
 				<li><h3>Synopsis</h3></li>
@@ -33,9 +37,9 @@
 
 
 		</div>
-	</div>
+	</div>-->
 	<div class="moreInfo">
-		<button type="button" class="btn btn-default"><span
+		<button type="button" class="btn btn-info"><span
 				class="glyphicon glyphicon-eye-open"></span>
 			More Information
 		</button>

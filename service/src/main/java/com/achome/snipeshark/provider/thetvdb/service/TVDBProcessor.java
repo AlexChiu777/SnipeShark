@@ -23,7 +23,6 @@ public class TVDBProcessor {
         this.apiKey = apiKey;
         this.language = language;
     }
-
     //Gets a list of mirrors from tvdb
     public Mirrors getMirrors(String apiKey) {
         String url = TVDBConstants.TV_DB_BASE_URL + TVDBConstants.TV_DB_API_URI + apiKey + TVDBConstants.TV_DB_MIRROR_URI;

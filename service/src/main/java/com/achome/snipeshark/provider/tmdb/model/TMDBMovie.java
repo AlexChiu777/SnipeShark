@@ -1,18 +1,19 @@
 package com.achome.snipeshark.provider.tmdb.model;
 
+import com.achome.snipeshark.provider.tmdb.model.advanced.CommonTMDBData;
+
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Alex on 6/6/2015.
  */
-public class TMDBMovie extends CommonTMDBData{
+public class TMDBMovie extends CommonTMDBData {
     private boolean adult;
-    private String release_date;
+    private Date release_date;
     private String original_title;
     private String title;
     private List<Integer> genre_ids;
-    private String original_language;
-    private String overview;
     private float popularity;
     private boolean video;
 
@@ -24,11 +25,11 @@ public class TMDBMovie extends CommonTMDBData{
         this.adult = adult;
     }
 
-    public String getRelease_date() {
+    public Date getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(String release_date) {
+    public void setRelease_date(Date release_date) {
         this.release_date = release_date;
     }
 
@@ -54,22 +55,6 @@ public class TMDBMovie extends CommonTMDBData{
 
     public void setGenre_ids(List<Integer> genre_ids) {
         this.genre_ids = genre_ids;
-    }
-
-    public String getOriginal_language() {
-        return original_language;
-    }
-
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
     }
 
     public float getPopularity() {

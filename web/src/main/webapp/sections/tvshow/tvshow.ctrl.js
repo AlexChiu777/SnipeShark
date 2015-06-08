@@ -1,39 +1,69 @@
 angular
     .module('app').controller("TVShowsController", function (ShowService) {
         var vm = this;
-        vm.data = '';
-        vm.shows = '';
+
+
+
         vm.loading = true;
 
+        //default tab
+        vm.toggleItem = 'premiere';
+
+        vm.toggleMenu = function (stringToCompare) {
+            return angular.equals(vm.toggleItem, stringToCompare);
+        }
+
+        /*FOR POPULAR PAGE*/
+        vm.popularshows = '';
+        vm.getPopularTV = function () {
+            vm.loading = true;
+            ShowService.getPopularTV().then (
+                function (response) {
+                    vm.popularshows = response;
+                    vm.loading = false;
+                }
+            )
+        }
+
+        /*FOR PREMIERE PAGE*/
+        vm.showpremiere = '';
+        vm.getTVPremiere = function () {
+            vm.loading = true;
+            ShowService.getTVPremiere().then (
+                function (response) {
+                    vm.showpremiere = response;
+                    vm.loading = false;
+                }
+            )
+        }
+
+        /*FOR SEARCH PAGE*/
         vm.panelClass = ['panel-primary', 'panel-success', 'panel-info', 'panel-warning', 'panel-danger'];
+        vm.search = '';
+        vm.searchShows = '';
 
-
+        //search TV by name
         vm.getTVSeriesByName = function () {
             vm.loading = true;
-            ShowService.getShowByName(vm.data).then(
+            ShowService.getShowByName(vm.search).then(
                 function (response) {
-                    vm.shows = response;
+                    vm.searchShows = response;
                     vm.loading = false;
 
                 });
         };
 
+        //search menu for
         vm.collapseShowDetail = function(id, index) {
-            if (vm.shows[index].loaded == null || vm.shows[index].loaded == false) {
+            //loading full details, but also keep in mind to avoid double clicking and requesting twice
+            if (vm.searchShows[index].loaded == null || vm.searchShows[index].loaded == false) {
                 loadFullSeries (vm, id, index, ShowService);
             } else {
-                vm.shows[index].isDetails = !vm.shows[index].isDetails;
+                vm.searchShows[index].isDetails = !vm.searchShows[index].isDetails;
             }
         }
 
 
-
-        //toggle between search and recently added
-        vm.toggleItem = 'recent';
-
-        vm.toggleMenu = function (stringToCompare) {
-            return angular.equals(vm.toggleItem, stringToCompare);
-        }
     });
 
 function loadFullSeries (vm, id, index, ShowService) {
@@ -46,6 +76,6 @@ function loadFullSeries (vm, id, index, ShowService) {
             specificShow.isDetails = true;
             specificShow.loaded = true;
 
-            vm.shows[index] = specificShow;
+            vm.searchShows[index] = specificShow;
         })
 };

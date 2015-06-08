@@ -63,7 +63,11 @@ public class TVDBTranslator {
 
         TVNetwork network = new TVNetwork();
         network.setNetworkName(tvdbSeries.getNetwork());
-        series.setTvNetwork(network);
+
+        List<TVNetwork> networkList = new ArrayList<TVNetwork>();
+        networkList.add(network);
+
+        series.setTvNetworks(networkList);
 
 
         return series;

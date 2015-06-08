@@ -25,7 +25,7 @@ public class Series {
 
     private String language;
 
-    private TVNetwork tvNetwork;
+    private List<TVNetwork> tvNetworks;
 
     private String overview;
 
@@ -155,12 +155,12 @@ public class Series {
         this.language = language;
     }
 
-    public TVNetwork getTvNetwork() {
-        return tvNetwork;
+    public List<TVNetwork> getTvNetworks() {
+        return tvNetworks;
     }
 
-    public void setTvNetwork(TVNetwork tvNetwork) {
-        this.tvNetwork = tvNetwork;
+    public void setTvNetworks(List<TVNetwork> tvNetworks) {
+        this.tvNetworks = tvNetworks;
     }
 
     public String getOverview() {

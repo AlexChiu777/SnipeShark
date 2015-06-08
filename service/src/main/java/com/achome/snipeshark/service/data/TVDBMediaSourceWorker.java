@@ -18,11 +18,13 @@ import java.util.List;
 */
 
 public class TVDBMediaSourceWorker implements MediaSourceServiceFactory {
-    private TVDBProcessor processor;
+    private static TVDBProcessor processor = null;
     private static final TVDBTranslator translator = new TVDBTranslator();
 
     public TVDBMediaSourceWorker(String apiKey, String language) {
-        processor = new TVDBProcessor(apiKey, language);
+        if (processor == null) {
+            processor = new TVDBProcessor(apiKey, language);
+        }
     }
 
     @Override
@@ -102,6 +104,18 @@ public class TVDBMediaSourceWorker implements MediaSourceServiceFactory {
             updatedContent.getEpisodeList().add(translator.translateTVDBEpisodeToEpisode(tvdbEpisode));
         }
 
+        return null;
+    }
+
+    @Override
+    public List<Series> getPopularSeries() {
+        //not supported
+        return null;
+    }
+
+    @Override
+    public List<Series> getTVPremiere() {
+        //not supported
         return null;
     }
 }

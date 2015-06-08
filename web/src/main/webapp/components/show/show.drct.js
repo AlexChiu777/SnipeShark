@@ -15,17 +15,14 @@ function show () {
 	return directive;
 }
 
-function controller () {
-	var vm = this;
-
-	vm.isCollapsed = true;
-	vm.genres = ["horror", "mystery", "adventure"];
-	vm.genreColor = 'label-default';
+function controller ($scope) {
 
 
-	vm.isCollapsed = true;
-	vm.isReadOnly = true;
-	vm.rate = 7;
-	vm.max = 10;
-	vm.isLiked = false;
+	if ($scope.show.fanart == null) {
+		$scope.show.fanart = 'asset/img/placeholder.png';
+	}
+
+	$scope.show.genres = ["horror", "mystery", "adventure"];
+
+
 }

@@ -1,4 +1,4 @@
-package com.achome.snipeshark.provider.tmdb.model;
+package com.achome.snipeshark.provider.tmdb.model.advanced;
 
 /**
  * Created by Alex on 6/6/2015.
@@ -9,6 +9,19 @@ public class CommonTMDBData {
     private String poster_path;
     private float vote_average;
     private int vote_count;
+    private String overview;
+    private String original_language;
+
+    //tv specific
+    private String name;
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
 
     public String getBackdrop_path() {
         return backdrop_path;
@@ -48,5 +61,21 @@ public class CommonTMDBData {
 
     public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public String getOriginal_language() {
+        return original_language;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

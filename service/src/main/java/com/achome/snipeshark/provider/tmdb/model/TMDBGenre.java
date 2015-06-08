@@ -3,7 +3,7 @@ package com.achome.snipeshark.provider.tmdb.model;
 /**
  * Created by Alex on 6/6/2015.
  */
-public class TMDBGenreData {
+public class TMDBGenre {
     //movie and tv show uses the same format
     //pull once in a while to update or when we get an unkown genre
 
