@@ -1,11 +1,8 @@
 package com.achome.snipeshark.entity;
 
 import com.achome.snipeshark.entity.primaryId.SeasonPK;
-import com.achome.snipeshark.entity.primaryId.SeasonPK;
-import com.achome.snipeshark.model.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
