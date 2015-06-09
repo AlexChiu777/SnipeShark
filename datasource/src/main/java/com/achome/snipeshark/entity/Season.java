@@ -12,7 +12,7 @@ import java.util.List;
 @Access(AccessType.FIELD)
 @Table(name="SEASON", uniqueConstraints = @UniqueConstraint(columnNames = {"PROVIDER_ID", "PROVIDER"}))
 @IdClass(SeasonPK.class)
-public class Season extends Provider{
+public class Season extends BaseModel {
 	@Id
 	@Column(name = "SEASON_ID")
 	private long seasonId;
