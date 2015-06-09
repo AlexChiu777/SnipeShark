@@ -13,7 +13,7 @@ public class EntertainmentService {
     private static TMDBMediaSourceWorker tmdbWorker = new TMDBMediaSourceWorker(SSConstants.TMDB_API_KEY);
 
     private final static EntertainmentService instance = new EntertainmentService();
-    private EntertainmentService() {};
+    private EntertainmentService() {}
 
     public static EntertainmentService getInstance() {
         return instance;

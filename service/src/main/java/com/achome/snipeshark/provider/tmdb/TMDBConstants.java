@@ -8,7 +8,7 @@ public final class TMDBConstants {
     public static final String TMDB_BASE_URL = "http://api.themoviedb.org/3/";
     public static final String TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
-    public static final String TMDB_BACK_DROP_URI = "w300";
+    public static final String TMDB_BACK_DROP_URI = "w780";
     public static final String TMDB_POSTER_URI = "w185";
 
     public static final String TMDB_API_PARAMETER = "?api_key=";
