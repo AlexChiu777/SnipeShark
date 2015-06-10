@@ -1,4 +1,4 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="PROVIDER_ID")
-    private int providerId;
+    private long providerId;
 
     @Column(name="PROVIDER_TYPE")
     private String providerType;
@@ -20,11 +20,11 @@ public class Provider {
     @Column(name="DESCRIPTION")
     private String description;
 
-    public int getProviderId() {
+    public long getProviderId() {
         return providerId;
     }
 
-    public void setProviderId(int providerId) {
+    public void setProviderId(long providerId) {
         this.providerId = providerId;
     }
 

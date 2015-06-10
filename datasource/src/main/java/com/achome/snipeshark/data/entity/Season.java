@@ -1,6 +1,6 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
-import com.achome.snipeshark.entity.primaryId.SeasonPK;
+import com.achome.snipeshark.data.entity.primaryId.SeasonPK;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
 import javax.persistence.*;
 import java.util.List;

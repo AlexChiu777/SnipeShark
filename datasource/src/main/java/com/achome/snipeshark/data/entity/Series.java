@@ -1,4 +1,4 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
 import java.sql.Date;
 import java.util.List;
@@ -11,26 +11,28 @@ import javax.persistence.*;
 public class Series extends BaseModel{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="SERIES_ID")
+	@Column(name="SERIES_ID", unique = true)
 	private long seriesID;
 
-	@Column(name="SERIES_NAME")
+	@Column(name="SERIES_NAME", nullable = false)
 	private String seriesName;
 
-	@Column(name="AIR_DAY_OF_WEEK")
+	@Column(name="AIR_DAY_OF_WEEK", nullable = true)
 	private int airDayOfWeek;
 
-	@Column(name="AIR_TIME")
+	@Column(name="AIR_TIME", nullable = true)
 	private long airTime;
 
-	@Column(name="CONTENT_RATING")
+	@Column(name="CONTENT_RATING", nullable = true)
 	private String contentRating;
 
-	@Column(name="FIRST_AIRED")
+	@Column(name="FIRST_AIRED", nullable = true)
 	private Date firstAired;
 
-	@Column(name="GENRE")
-	private int genre;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "SERIES_GENRE", joinColumns = @JoinColumn(name="SERIES_ID"), inverseJoinColumns = @JoinColumn(name="GENRE_ID"))
+	private List<Genre> genreList;
+
 
 	@Column(name="IMDB_ID")
 	private String imdbID;
@@ -108,14 +110,6 @@ public class Series extends BaseModel{
 		this.firstAired = firstAired;
 	}
 
-	public int getGenre() {
-		return genre;
-	}
-
-	public void setGenre(int genre) {
-		this.genre = genre;
-	}
-
 	public String getImdbID() {
 		return imdbID;
 	}
@@ -180,6 +174,22 @@ public class Series extends BaseModel{
 		this.status = status;
 	}
 
+	public List<Genre> getGenreList() {
+		return genreList;
+	}
+
+	public void setGenreList(List<Genre> genreList) {
+		this.genreList = genreList;
+	}
+
+	public List<Season> getSeasons() {
+		return seasons;
+	}
+
+	public void setSeasons(List<Season> seasons) {
+		this.seasons = seasons;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -189,20 +199,21 @@ public class Series extends BaseModel{
 
 		if (airDayOfWeek != series.airDayOfWeek) return false;
 		if (airTime != series.airTime) return false;
-		if (genre != series.genre) return false;
 		if (languageId != series.languageId) return false;
 		if (Float.compare(series.rating, rating) != 0) return false;
 		if (ratingCount != series.ratingCount) return false;
 		if (runtime != series.runtime) return false;
 		if (seriesID != series.seriesID) return false;
 		if (status != series.status) return false;
-		if (!contentRating.equals(series.contentRating)) return false;
-		if (!firstAired.equals(series.firstAired)) return false;
-		if (!imdbID.equals(series.imdbID)) return false;
-		if (!overview.equals(series.overview)) return false;
-		if (!seasons.equals(series.seasons)) return false;
+		if (contentRating != null ? !contentRating.equals(series.contentRating) : series.contentRating != null)
+			return false;
+		if (firstAired != null ? !firstAired.equals(series.firstAired) : series.firstAired != null) return false;
+		if (genreList != null ? !genreList.equals(series.genreList) : series.genreList != null) return false;
+		if (imdbID != null ? !imdbID.equals(series.imdbID) : series.imdbID != null) return false;
+		if (overview != null ? !overview.equals(series.overview) : series.overview != null) return false;
+		if (seasons != null ? !seasons.equals(series.seasons) : series.seasons != null) return false;
 		if (!seriesName.equals(series.seriesName)) return false;
-		if (!tvNetwork.equals(series.tvNetwork)) return false;
+		if (tvNetwork != null ? !tvNetwork.equals(series.tvNetwork) : series.tvNetwork != null) return false;
 
 		return true;
 	}
@@ -213,18 +224,18 @@ public class Series extends BaseModel{
 		result = 31 * result + seriesName.hashCode();
 		result = 31 * result + airDayOfWeek;
 		result = 31 * result + (int) (airTime ^ (airTime >>> 32));
-		result = 31 * result + contentRating.hashCode();
-		result = 31 * result + firstAired.hashCode();
-		result = 31 * result + genre;
-		result = 31 * result + imdbID.hashCode();
+		result = 31 * result + (contentRating != null ? contentRating.hashCode() : 0);
+		result = 31 * result + (firstAired != null ? firstAired.hashCode() : 0);
+		result = 31 * result + (genreList != null ? genreList.hashCode() : 0);
+		result = 31 * result + (imdbID != null ? imdbID.hashCode() : 0);
 		result = 31 * result + languageId;
-		result = 31 * result + tvNetwork.hashCode();
-		result = 31 * result + overview.hashCode();
+		result = 31 * result + (tvNetwork != null ? tvNetwork.hashCode() : 0);
+		result = 31 * result + (overview != null ? overview.hashCode() : 0);
 		result = 31 * result + (rating != +0.0f ? Float.floatToIntBits(rating) : 0);
 		result = 31 * result + ratingCount;
 		result = 31 * result + runtime;
 		result = 31 * result + status;
-		result = 31 * result + seasons.hashCode();
+		result = 31 * result + (seasons != null ? seasons.hashCode() : 0);
 		return result;
 	}
 }

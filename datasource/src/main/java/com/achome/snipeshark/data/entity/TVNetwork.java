@@ -1,4 +1,4 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
 import javax.persistence.*;
 
@@ -12,16 +12,16 @@ public class TVNetwork extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="NETWORK_ID")
-    private int networkId;
+    private long networkId;
 
     @Column(name="NETWORK_NAME")
     private String networkName;
 
-    public int getNetworkId() {
+    public long getNetworkId() {
         return networkId;
     }
 
-    public void setNetworkId(int networkId) {
+    public void setNetworkId(long networkId) {
         this.networkId = networkId;
     }
 

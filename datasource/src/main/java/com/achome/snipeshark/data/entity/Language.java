@@ -1,4 +1,4 @@
-package com.achome.snipeshark.entity;
+package com.achome.snipeshark.data.entity;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="LANGUAGE_ID")
-    private int languageId;
+    private long languageId;
 
     @Column(name="ISO_CODE")
     private String isoCode;
@@ -28,11 +28,11 @@ public class Language {
         this.description = description;
     }
 
-    public int getLanguageId() {
+    public long getLanguageId() {
         return languageId;
     }
 
-    public void setLanguageId(int languageId) {
+    public void setLanguageId(long languageId) {
         this.languageId = languageId;
     }
 

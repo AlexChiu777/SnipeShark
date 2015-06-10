@@ -1,7 +1,5 @@
-import com.achome.snipeshark.entity.Actor;
-import com.achome.snipeshark.entity.Episode;
-import com.achome.snipeshark.entity.Season;
-import com.achome.snipeshark.entity.Series;
+import com.achome.snipeshark.SSConstants;
+import com.achome.snipeshark.service.EntertainmentService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,28 +23,9 @@ public class Application {
             tx = em.getTransaction();
             tx.begin();
 
-            Episode episode = new Episode();
-            episode.setEpisodeID(1);
-            episode.setEpisodeName("alex");
+            com.achome.snipeshark.model.Series series = EntertainmentService.getInstance().getMediaSourceWorker(SSConstants.PROVIDER_TYPE_TVDB).getSeriesById("270408");
 
-            Season season = new Season();
-            season.setSeasonId(1);
-
-            Series series = new Series();
-            series.setSeriesID(1);
-
-            episode.setSeason(season);
-
-            season.setSeries(series);
-
-
-
-
-
-
-
-            em.merge(episode);
-
+            System.out.println(series);
 
 
             tx.commit();

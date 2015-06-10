@@ -1,6 +1,6 @@
-package com.achome.snipeshark.entity.primaryId;
+package com.achome.snipeshark.data.entity.primaryId;
 
-import com.achome.snipeshark.entity.Series;
+import com.achome.snipeshark.data.entity.Series;
 
 import java.io.Serializable;
 
