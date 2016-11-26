@@ -44,4 +44,14 @@ Temporary Items
 .apdisk
 
 # Ignore .idea directory
-SnipeShark/.idea/
+
+*.iml
+
+.classpath
+.project
+.settings/
+target/
+
+
+.idea/
+
